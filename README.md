@@ -1,8 +1,21 @@
 # stc_wyLib
 
-This is a hardware abstraction layer library for STC MCU.
+![GitHub License](https://img.shields.io/github/license/ultrman-seven/mm32_wyLib) ![stc](https://img.shields.io/badge/STC-LIB-blue) ![update](https://img.shields.io/github/created-at/ultrman-seven/mm32_wyLib) ![size](https://img.shields.io/github/directory-file-count/ultrman-seven/mm32_wyLib)
 
-PS: Almost half of the abstraction level, because C51 is too difficult to abstract.
+This is a hardware abstraction layer library for [STC](https://www.stcaimcu.com/) MCU.
+
+**NOTE**: You should define your chip model in keil first.
+
+The chip model list is as follows:
+
+|model|define|
+|:-------|:--------:|
+|STC8H|`_ChipSTC8H`|
+|STC8G|`_ChipSTC8G`|
+
+`PS`: *Almost half of the abstraction level, because C51 is too difficult to abstract.*
+
+If it weren't for being so **cheap**, let the 51 go to hell and then go embrace my [STM32](https://github.com/ultrman-seven/stm32CppHAL) and [MM32](https://github.com/ultrman-seven/mm32_wyLib) HAL library.
 
 ## Use Guide
 
@@ -28,3 +41,13 @@ void main()
         ;
 }
 ```
+
+### UART
+
+### SPI
+
+### IIC
+
+### ADC
+
+### DMA

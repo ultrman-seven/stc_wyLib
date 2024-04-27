@@ -1,5 +1,5 @@
-#ifndef BDCDE5A9_02A9_4099_B09E_F8DDD2E2D3FA
-#define BDCDE5A9_02A9_4099_B09E_F8DDD2E2D3FA
+#ifndef __STC_LIB_CHIP_H___WhatWouldHappenIf_LOVE_WasLike_A_MicroController__
+#define __STC_LIB_CHIP_H___WhatWouldHappenIf_LOVE_WasLike_A_MicroController__
 
 #include "stcInterruptNum.h"
 
@@ -11,4 +11,4 @@
 // #include "reg52.h"
 #endif
 
-#endif /* BDCDE5A9_02A9_4099_B09E_F8DDD2E2D3FA */
+#endif /* __STC_LIB_CHIP_H___WhatWouldHappenIf_LOVE_WasLike_A_MicroController__ */

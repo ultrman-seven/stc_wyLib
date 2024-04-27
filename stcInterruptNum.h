@@ -1,6 +1,12 @@
 #ifndef E7308259_4FB0_4531_8070_2FBDE4334599
 #define E7308259_4FB0_4531_8070_2FBDE4334599
 
+#ifndef __vscode__
+#define STC_Interrupt(_N) interrupt _N
+#else
+#define STC_Interrupt(_N)
+#endif
+
 #define STC_InterruptNumTimer0 1
 #define STC_InterruptNumTimer1 3
 #define STC_InterruptNumTimer2 12

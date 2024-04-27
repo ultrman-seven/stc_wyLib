@@ -1,5 +1,5 @@
-#ifndef B3BB5DF2_1561_4F75_A67D_9CED9BAD084D
-#define B3BB5DF2_1561_4F75_A67D_9CED9BAD084D
+#ifndef __STC_LIB_GPIO_H__
+#define __STC_LIB_GPIO_H__
 
 typedef enum
 {
@@ -15,4 +15,4 @@ typedef enum
 #define __Gpio_Pin2String(_Gpio_Pin) #_Gpio_Pin
 #define gpioPin2Str(_Gpio_Pin) __Gpio_Pin2String(_Gpio_Pin)
 void gpioInit(const char *pinName, GpioMode m);
-#endif /* B3BB5DF2_1561_4F75_A67D_9CED9BAD084D */
+#endif /* __STC_LIB_GPIO_H__ */

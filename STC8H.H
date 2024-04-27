@@ -3,10 +3,8 @@
 
 #ifndef __vscode__
 #define __Sbit_Def(__SFR_NAME, _BIT) __SFR_NAME ^ _BIT
-#define STC_Interrupt(_N) interrupt _N
 #else
 #define __Sbit_Def(__SFR_NAME, _BIT) 0
-#define STC_Interrupt(_N)
 #endif
 
 #define SBIT_GEN_DEF(_SFR, _A, _B, _C, _D, _E, _F, _G, _H) \

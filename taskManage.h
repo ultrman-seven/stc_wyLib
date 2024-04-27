@@ -1,5 +1,5 @@
-#ifndef E7ECD4E5_609C_4FC4_9059_031399811A70
-#define E7ECD4E5_609C_4FC4_9059_031399811A70
+#ifndef __STC_LIB_TASK_H__
+#define __STC_LIB_TASK_H__
 
 typedef struct
 {
@@ -10,4 +10,4 @@ typedef struct
 
 void countTaskRun(countTask *task);
 
-#endif /* E7ECD4E5_609C_4FC4_9059_031399811A70 */
+#endif /* __STC_LIB_TASK_H__ */

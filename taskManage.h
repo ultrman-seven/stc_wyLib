@@ -8,6 +8,20 @@ typedef struct
     unsigned long _cnt;
 }countTask;
 
-void countTaskRun(countTask *task);
+typedef struct
+{
+    void (*task1)(void);
+    void (*task2)(void);
+    unsigned long trigger1;
+    unsigned long trigger1_2;
+    unsigned long _cnt;
+}taskDuoTrigger;
+
+void countTaskRun(countTask *task) large reentrant;
+
+void taskDuoTriggerRun(taskDuoTrigger *task) large reentrant;
+
+#define taskCountTrigger countTask
+#define taskCountTriggerRun countTaskRun
 
 #endif /* __STC_LIB_TASK_H__ */

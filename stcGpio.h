@@ -12,6 +12,27 @@ typedef enum
     GpioModeIPU = 0x32
 
 } GpioMode;
+
+#define gpioEnableInput(_Port, _Pin) \
+    do                               \
+    {                                \
+        unsigned char mask = 0x01;   \
+        P_SW2 |= 0x80;               \
+        mask <<= _Pin;               \
+        P##_Port##IE |= mask;        \
+        P_SW2 &= 0x7f;               \
+    } while (0);
+#define gpioDisableInput(_Port, _Pin) \
+    do                                \
+    {                                 \
+        unsigned char mask = 0x01;    \
+        P_SW2 |= 0x80;                \
+        mask <<= _Pin;                \
+        mask = ~mask;                 \
+        P##_Port##IE &= mask;         \
+        P_SW2 &= 0x7f;                \
+    } while (0);
+
 #define __Gpio_Pin2String(_Gpio_Pin) #_Gpio_Pin
 #define gpioPin2Str(_Gpio_Pin) __Gpio_Pin2String(_Gpio_Pin)
 void gpioInit(const char *pinName, GpioMode m);

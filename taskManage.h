@@ -6,7 +6,7 @@ typedef struct
     void (*task)(void);
     unsigned long trigger;
     unsigned long _cnt;
-}countTask;
+} countTask;
 
 typedef struct
 {
@@ -15,9 +15,17 @@ typedef struct
     unsigned long trigger1;
     unsigned long trigger1_2;
     unsigned long _cnt;
-}taskDuoTrigger;
+} taskDuoTrigger;
+
+typedef struct
+{
+    unsigned long trigger;
+    unsigned long _cnt;
+    char flg;
+} countFlag;
 
 void countTaskRun(countTask *task) large reentrant;
+void countFlagRun(countFlag *flag) large reentrant;
 
 void taskDuoTriggerRun(taskDuoTrigger *task) large reentrant;
 

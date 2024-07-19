@@ -19,3 +19,12 @@ void taskDuoTriggerRun(taskDuoTrigger *task) large reentrant
     else if (task->_cnt >= task->trigger1)
         task->task1();
 }
+
+void countFlagRun(countFlag *flag) large reentrant
+{
+    if (++flag->_cnt >= flag->trigger)
+    {
+        flag->_cnt = 0;
+        flag->flg = 1;
+    }
+}

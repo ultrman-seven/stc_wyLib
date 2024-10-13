@@ -6,6 +6,7 @@ typedef enum
     GpioModeQuasiIO = 0x00,
     GpioModePP,
     GpioModeOD = 0x03,
+    GpioModeOD_PU = 0x23,
     GpioModeInAnalog = 0x02,
     GpioModeInFloating = 0x12,
     // GpioModeIPD = 0x22,

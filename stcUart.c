@@ -54,10 +54,18 @@ void (*__uartRxCallbacks[__UART_NUM])(unsigned char);
             __uartQueuePush(_N - 1, S##_N##BUF);   \
     }
 
+#if __STC_LIB_UART_USE_uart1
 void UART1IRQ_handler(void) STC_Interrupt(STC_InterruptNumUART1) { __UART_IRQ_WORK(1) }
+#endif
+#if __STC_LIB_UART_USE_uart2
 void UART2IRQ_handler(void) STC_Interrupt(STC_InterruptNumUART2) { __UART_IRQ_WORK(2) }
+#endif
+#if __STC_LIB_UART_USE_uart3
 void UART3IRQ_handler(void) STC_Interrupt(STC_InterruptNumUART3) { __UART_IRQ_WORK(3) }
+#endif
+#if __STC_LIB_UART_USE_uart4
 void UART4IRQ_handler(void) STC_Interrupt(STC_InterruptNumUART4) { __UART_IRQ_WORK(4) }
+#endif
 
 #define __UART_SEND_SWITCH_CASE(_N) \
     case _N:                        \
@@ -81,17 +89,20 @@ void uartSendByte(unsigned char uartNum, unsigned char d)
     }
 }
 
+#if __STC_LIB_UART_USE_uartSendData
 void uartSendData(unsigned char uartNum, unsigned char *d, unsigned char len)
 {
     while (len--)
         uartSendByte(uartNum, *d++);
 }
-
+#endif
+#if __STC_LIB_UART_USE_uartSendStr
 void uartSendStr(unsigned char uartNum, char *s)
 {
     while (*s)
         uartSendByte(uartNum, *s++);
 }
+#endif
 
 char __uartStack[10];
 unsigned char __uartStackCnt = 0;
@@ -101,6 +112,28 @@ unsigned char __uartStackCnt = 0;
 #define __UART_STACK_Not_Empty() __uartStackCnt
 // #define __UART_TOP()
 
+#if __STC_LIB_UART_USE_uartSendHexByteNum
+void uartSendHexByteNum(unsigned char uartNum, unsigned char n)
+{
+    unsigned char tmp;
+    tmp = n >> 4;
+    tmp &= 0x0f;
+    if (tmp < 10)
+        tmp += '0';
+    else
+        tmp += 55; // ('A' - 10);
+    uartSendByte(uartNum, tmp);
+
+    tmp = n & 0x0f;
+    if (tmp < 10)
+        tmp += '0';
+    else
+        tmp += 55; // ('A' - 10);
+    uartSendByte(uartNum, tmp);
+}
+#endif
+
+#if __STC_LIB_UART_USE_uartSendNum
 void uartSendNum(unsigned char uartNum, int n)
 {
     if (n < 0)
@@ -118,7 +151,9 @@ void uartSendNum(unsigned char uartNum, int n)
     while (__UART_STACK_Not_Empty())
         uartSendByte(uartNum, __UART_STACK_POP());
 }
+#endif
 
+#if __STC_LIB_UART_USE_uartSendFloat
 void uartSendFloat(unsigned char uartNum, float n, unsigned char fmt)
 {
     int intPart = n;
@@ -132,7 +167,13 @@ void uartSendFloat(unsigned char uartNum, float n, unsigned char fmt)
         intPart = -intPart;
     uartSendNum(uartNum, intPart);
 }
-
+#endif
+#if __STC_LIB_UART_USE_uartBufferIsNotEmpty
 char uartBufferIsNotEmpty(unsigned char uartNum) { return __uartStates[uartNum - 1].buffer; }
+#endif
+#if __STC_LIB_UART_USE_uartGetBuffer
 unsigned char uartGetBuffer(unsigned char uartNum) { return __uartQueuePop(uartNum - 1); }
+#endif
+#if __STC_LIB_UART_USE_uartSetRxCallback
 void uartSetRxCallback(unsigned char uartNum, void (*f)(unsigned char)) { __uartRxCallbacks[uartNum - 1] = f; }
+#endif

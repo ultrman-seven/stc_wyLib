@@ -1,6 +1,7 @@
 #include "taskManage.h"
+#include "string.h"
 
-void countTaskRun(countTask *task) large reentrant
+void countTaskRun(taskCountTriggerCore *task) large reentrant
 {
     if (++task->_cnt >= task->trigger)
     {
@@ -9,7 +10,7 @@ void countTaskRun(countTask *task) large reentrant
     }
 }
 
-void taskDuoTriggerRun(taskDuoTrigger *task) large reentrant
+void taskDuoTriggerRun(taskDuoTriggerCore *task) large reentrant
 {
     if (++(task->_cnt) >= task->trigger1_2)
     {
@@ -26,5 +27,23 @@ void countFlagRun(countFlag *flag) large reentrant
     {
         flag->_cnt = 0;
         flag->flg = 1;
+    }
+}
+
+void taskMsPeriodicInit(taskMsPeriodicCore *task, unsigned int ms, void (*taskFunc)(void))
+{
+    task->_gap = ms;
+    task->task = taskFunc;
+    sysGetTimeStamp(&task->_t);
+}
+
+void taskMsPeriodicRun(taskMsPeriodicCore *core)
+{
+    sysTime_t xdata t;
+    sysGetTimeStamp(&t);
+    if (sysTimeMinusMs(&core->_t, &t) >= core->_gap)
+    {
+        core->task();
+        memcpy(&core->_t, &t, sizeof(sysTime_t));
     }
 }

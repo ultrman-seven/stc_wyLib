@@ -10,9 +10,9 @@ typedef struct
 
 #define __UART_QUEUE_ARRAY_SIZE 10
 
-unsigned char __uartQueue[__UART_NUM][__UART_QUEUE_ARRAY_SIZE];
-unsigned char __uartQueueFront[__UART_NUM] = {0};
-UartState __uartStates[__UART_NUM] = {0};
+unsigned char xdata __uartQueue[__UART_NUM][__UART_QUEUE_ARRAY_SIZE];
+unsigned char xdata __uartQueueFront[__UART_NUM] = {0};
+UartState xdata __uartStates[__UART_NUM] = {0};
 
 unsigned char __uartQueuePop(unsigned char n_minus1)
 {
@@ -104,8 +104,8 @@ void uartSendStr(unsigned char uartNum, char *s)
 }
 #endif
 
-char __uartStack[10];
-unsigned char __uartStackCnt = 0;
+char xdata __uartStack[10];
+unsigned char xdata __uartStackCnt = 0;
 
 #define __UART_STACK_PUSH(_D) __uartStack[__uartStackCnt++] = _D
 #define __UART_STACK_POP() __uartStack[--__uartStackCnt]

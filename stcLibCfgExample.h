@@ -1,6 +1,16 @@
 #ifndef BB336246_54F6_40BE_AD56_8DCE6FAE7E27
 #define BB336246_54F6_40BE_AD56_8DCE6FAE7E27
 
+#define __STC_LIB_Sys_Timer_Index 0
+#define __STC_LIB_Sys_Time_UseHour 1
+#define __STC_LIB_Sys_Time_UseDay 0
+
+#define __STC_LIB_Sys_Time_USE_MinusUs 1
+#define __STC_LIB_Sys_Time_USE_MinusMs 1
+#define __STC_LIB_Sys_Time_USE_MinusSec 1
+
+#define __STC_LIB_GPIO_USE_KeyFSM 1
+
 #define __STC_LIB_UART_USE_uart1 1
 #define __STC_LIB_UART_USE_uart2 1
 #define __STC_LIB_UART_USE_uart3 1

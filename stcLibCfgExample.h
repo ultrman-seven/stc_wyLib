@@ -9,6 +9,11 @@
 #define __STC_LIB_Sys_Time_USE_MinusMs 1
 #define __STC_LIB_Sys_Time_USE_MinusSec 1
 
+#define __STC_LIB_Task_USE_TaskCountTrigger 1
+#define __STC_LIB_Task_USE_TaskDuoTrigger 1
+#define __STC_LIB_Task_USE_TaskMsPeriodic 1
+#define __STC_LIB_Task_USE_TaskMsDelay 1
+
 #define __STC_LIB_GPIO_USE_KeyFSM 1
 
 #define __STC_LIB_UART_USE_uart1 1
